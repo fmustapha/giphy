@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import GifsComponent from './GifsComponent';
 
-class HomeComponent extends Component {
-    state = {  }
+import '../stylesheets/HomeComponent.css';
 
-    componentDidMount () {
+const HomeComponent = props => {
+    const gifsData = props.data;
+    
+        let gifs = gifsData && gifsData.map(
+                        gif => <GifsComponent
+                            url={gif.images.fixed_height.url}
+                            key={gif.id}
+                    />);
 
-    }
-    render() { 
         return ( 
-            <div className="wrapper">
-                <h1>GIPHY</h1>
+            <div className="gifs-wrapper">
+                {gifs}
             </div>
          );
-    }
 }
  
 export default HomeComponent;
