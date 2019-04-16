@@ -12,31 +12,36 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      gifs: []
+      gifs: [],
+      loading: false
     };
   }
 
   componentDidMount() {
-    const query = 'pedro' 
+    this.handleSearch();
+  }
+
+  handleSearch = (query= 'pedro') => {
+    this.setState({ loading: true })
+    // const query = 'pedro' 
     axios.get( `https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`)
     .then(response => {
         this.setState({
-          gifs: response.data
+          gifs: response.data.data,
+          loading: false
         })
     })
     .catch(error => console.log('Error fetching data', error))
   }
 
   render() {
-    console.log(this.state.gifs, "<--gifs")
-    const { gifs } = this.state
     return (
       <div className="App">
         <div className="app-header">
-          <HeaderComponent />
+          <HeaderComponent onSearch={this.handleSearch}/>
         </div>
         <div>
-          <HomeComponent data={gifs.data} />
+          <HomeComponent {...this.state} />
         </div>
       </div>
     );
