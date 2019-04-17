@@ -1,7 +1,12 @@
 const initialState = {
         gifs: [],
         loading: true,
-        error: ''
+        error: '',
+        userGifs: {
+         gifs: [],   
+         message: '',
+         error: '',
+        }
     }
 
 export default initialState;

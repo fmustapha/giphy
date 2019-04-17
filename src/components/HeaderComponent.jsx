@@ -15,7 +15,7 @@ class HeaderComponent extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.onSearch(this.state.search)
+        this.props.handleSearch(this.state.search)
         e.currentTarget.reset();
     }
 
