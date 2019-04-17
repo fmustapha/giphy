@@ -3,7 +3,7 @@ import { LOADING_GIFS,
   LOAD_GIFS,
   ADD_GIF,
   ADD_GIF_ERROR,
-  ADDING_GIF_ERROR, LOAD_GIFS_ERROR  } from './actionTypes';
+  LOAD_GIFS_ERROR  } from './actionTypes';
 
 /**
  *
@@ -47,5 +47,5 @@ export const addGif = (gif) => {
  * @returns {Object} containing the error message
  */
 export const addGifError = (error) => {
-  return { type: ADD_GIF_ERROR, error };
+  return { type: ADD_GIF_ERROR, payload:error };
 }
