@@ -1,23 +1,36 @@
 import initalState from './initialState';
-import types from '../actions/actionTypes';
+import { LOADING_GIFS,
+    LOAD_GIFS,
+    LOAD_GIFS_ERROR, 
+    ADD_GIF,
+    ADD_GIF_ERROR,
+    ADDING_GIF_ERROR } from '../actions/actionTypes';
 
 const Gifs = (state=initalState, action) => {
 
     switch(action.type) {
-        case types.LOAD_GIFS:
+        case LOAD_GIFS:
         const data = action.payload
         return Object.assign({}, state,  {
             gifs: data,
             loading: false
         });
         
-        case types.LOADING_GIFS:
+        case LOADING_GIFS:
         return Object.assign({}, state, {
             gifs:[],
             loading: true
         })
-        case types.LOAD_GIFS_ERROR:
+        case LOAD_GIFS_ERROR:
         const error = action.payload
+        return Object.assign({}, state, {
+            gifs:[],
+            loading: false,
+            error 
+        })
+        case ADD_GIF:
+        // const allGifs = action.payload.gifs
+        console.log(action.payload, "<--action.payload")
         return Object.assign({}, state, {
             gifs:[],
             loading: false,

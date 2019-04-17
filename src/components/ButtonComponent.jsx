@@ -3,9 +3,9 @@ import React from 'react';
 import '../stylesheets/ButtonComponent.css';
 
 const ButtonComponent = props => {
-    const {type, label, name } = props
+    const {type, label, name, onClick } = props
         return ( 
-            <button type={type} name={name}>
+            <button type={type} name={name} onClick={onClick}>
                {label} 
             </button>
          );

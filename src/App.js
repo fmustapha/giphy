@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
-import loadGifs from './actions/gifs';
+import { loadGifs, addGif } from './actions/gifs';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 
 //components
 import HeaderComponent from './components/HeaderComponent';
@@ -26,14 +24,13 @@ class App extends Component {
   }
 
   render() {
-    const {gifs, handleSearch} = this.props
     return (
       <div className="App">
         <div className="app-header">
-          <HeaderComponent onSearch={handleSearch}/>
+          <HeaderComponent {...this.props}/>
         </div>
         <div>
-          <HomeComponent {...gifs} />
+          <HomeComponent {...this.props} />
         </div>
       </div>
     );
@@ -43,12 +40,14 @@ class App extends Component {
 App.propTypes = {
   query: PropTypes.string,
   gifs: PropTypes.object,
-  handleSearch: PropTypes.func
+  handleSearch: PropTypes.func,
+  handleGifSave: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSearch: (query='pedro') => dispatch(loadGifs(query))
+    handleSearch: (query='pedro') => dispatch(loadGifs(query)),
+    handleGifSave:(gif) => dispatch(addGif(gif))
   }
 };
 
