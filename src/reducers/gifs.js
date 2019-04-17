@@ -4,7 +4,7 @@ import { LOADING_GIFS,
     LOAD_GIFS_ERROR, 
     ADD_GIF,
     ADD_GIF_ERROR,
-    ADDING_GIF_ERROR } from '../actions/actionTypes';
+    } from '../actions/actionTypes';
 
 const Gifs = (state=initalState, action) => {
 
@@ -33,12 +33,20 @@ const Gifs = (state=initalState, action) => {
         case ADD_GIF:
         const selectedGif = action.payload
         const gifs = state.userGifs.gifs;
+        
         return Object.assign({}, state, {
-            userGifs: {
-                ...state.userGifs,
-                gifs:gifs.concat([selectedGif]),
-                message: 'Successfully saved to your gifs account'
-            }
+            userGifs: !gifs.includes(selectedGif) ? 
+                {
+                    ...state.userGifs,
+                    gifs: gifs.concat([selectedGif]), 
+                    message: 'Successfully saved to your gifs account'
+                }
+            : 
+                {
+                    ...state.userGifs,
+                    gifs: gifs, 
+                    message: 'This gif has already been saved'
+                }
         });
 
         case ADD_GIF_ERROR:

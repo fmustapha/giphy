@@ -10,11 +10,10 @@ const HomeComponent = props => {
 
     const handleClick =(e, gif) => {
         e.preventDefault();
-        try{
-            props.handleGifSave(gif);
-        }catch(error) {
-            props.handleSaveError(error);
-        }
+            if(gif) {
+                return props.handleGifSave(gif);
+            }
+            props.handleSaveError('The gif was not selected');
     }
 
     const { gifs } = props;
@@ -37,7 +36,7 @@ const HomeComponent = props => {
                                 type="submit"
                                 label="Save"
                                 name="save"
-                                onClick={handleClick}
+                                onClick={(e) => handleClick(e,gif)}
                             />
                         </div>);
 
