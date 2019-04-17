@@ -4,7 +4,7 @@ const initialState = {
         error: '',
         userGifs: {
          gifs: [],   
-         loading: false,
+         message: '',
          error: '',
         }
     }

@@ -4,9 +4,20 @@ import ButtonComponent from './ButtonComponent'
 
 import '../stylesheets/HomeComponent.css';
 
+
+
 const HomeComponent = props => {
-    console.log(props, "<----HomeProps")
-    const { gifs, handleGifSave } = props;
+
+    const handleClick =(e, gif) => {
+        e.preventDefault();
+        try{
+            props.handleGifSave(gif);
+        }catch(error) {
+            props.handleSaveError(error);
+        }
+    }
+
+    const { gifs } = props;
     const {gifs:allGifs, loading } = gifs;
     let gifsResult;
         if(loading) {
@@ -26,11 +37,7 @@ const HomeComponent = props => {
                                 type="submit"
                                 label="Save"
                                 name="save"
-                                onClick={(e)=> {
-                                    console.log(e.target, gif, "<--eTarget");
-                                    e.preventDefault();
-                                    handleGifSave(gif) 
-                                }}
+                                onClick={handleClick}
                             />
                         </div>);
 

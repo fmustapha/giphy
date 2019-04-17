@@ -10,7 +10,7 @@ import { LOADING_GIFS,
  * 
  * @param {String} query
  * @export
- * @returns {Object} containing a payload
+ * @returns {Object} containing a payload/ error
  */
 export const loadGifs = (query) => {
     return dispatch => axios.get(`https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`)
@@ -26,11 +26,10 @@ export const loadGifs = (query) => {
     });
 }
 
-
 /**
  *
  * 
- * @param {String} query
+ * @param {Object} gif
  * @export
  * @returns {Object} containing a payload
  */
@@ -39,3 +38,14 @@ export const addGif = (gif) => {
     payload: gif
   } 
 };
+
+/**
+ *
+ * 
+ * @param {String} error
+ * @export
+ * @returns {Object} containing the error message
+ */
+export const addGifError = (error) => {
+  return { type: ADD_GIF_ERROR, error };
+}

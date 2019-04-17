@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadGifs, addGif } from './actions/gifs';
+import { loadGifs, addGif, addGifError } from './actions/gifs';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -41,13 +41,15 @@ App.propTypes = {
   query: PropTypes.string,
   gifs: PropTypes.object,
   handleSearch: PropTypes.func,
-  handleGifSave: PropTypes.func
+  handleGifSave: PropTypes.func,
+  handleSaveError: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     handleSearch: (query='pedro') => dispatch(loadGifs(query)),
-    handleGifSave:(gif) => dispatch(addGif(gif))
+    handleGifSave:(gif) => dispatch(addGif(gif)),
+    handleSaveError: (error) => dispatch(addGifError(error))
   }
 };
 

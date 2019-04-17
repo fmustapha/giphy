@@ -20,21 +20,34 @@ const Gifs = (state=initalState, action) => {
         return Object.assign({}, state, {
             gifs:[],
             loading: true
-        })
+        });
+
         case LOAD_GIFS_ERROR:
         const error = action.payload
         return Object.assign({}, state, {
             gifs:[],
             loading: false,
             error 
-        })
+        });
+
         case ADD_GIF:
-        // const allGifs = action.payload.gifs
-        console.log(action.payload, "<--action.payload")
+        const selectedGif = action.payload
+        const gifs = state.userGifs.gifs;
         return Object.assign({}, state, {
-            gifs:[],
-            loading: false,
-            error 
+            userGifs: {
+                ...state.userGifs,
+                gifs:gifs.concat([selectedGif]),
+                message: 'Successfully saved to your gifs account'
+            }
+        });
+
+        case ADD_GIF_ERROR:
+        return Object.assign({}, state, {
+            userGifs: {
+                ...state.userGifs,
+                message: 'An Error occured. Could not save gif',
+                error: action.payload
+            }
         })
         default:
             return state;
