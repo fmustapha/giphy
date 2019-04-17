@@ -31,7 +31,6 @@ const Gifs = (state=initalState, action) => {
         });
 
         case ADD_GIF:
-        console.log(action.payload, "<--reducer Gif")
         const selectedGif = action.payload
         const gifs = state.userGifs.gifs;
         
