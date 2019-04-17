@@ -17,10 +17,12 @@ const Gifs = (state=initalState, action) => {
             loading: true
         })
         case types.LOAD_GIFS_ERROR:
-        return {
-            ...state,
-            error: action.payload
-        };
+        const error = action.payload
+        return Object.assign({}, state, {
+            gifs:[],
+            loading: false,
+            error 
+        })
         default:
             return state;
     };

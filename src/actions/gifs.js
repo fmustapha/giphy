@@ -17,7 +17,7 @@ const loadGifs = (query) => {
       dispatch({type: types.LOAD_GIFS, payload:gifs});
     })
     .catch((error) => {
-      dispatch({ type: types.LOAD_GIFS, error });
+      dispatch({ type: types.LOAD_GIFS, payload:error });
     });
 }
 
