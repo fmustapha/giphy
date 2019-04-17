@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import { bindActionCreators } from 'redux';
+import loadGifs from './actions/gifs';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// import axios from 'axios';
 
 //components
 import HeaderComponent from './components/HeaderComponent';
@@ -18,34 +22,40 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.handleSearch();
-  }
-
-  handleSearch = (query= 'pedro') => {
-    this.setState({ loading: true })
-    // const query = 'pedro' 
-    axios.get( `https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`)
-    .then(response => {
-        this.setState({
-          gifs: response.data.data,
-          loading: false
-        })
-    })
-    .catch(error => console.log('Error fetching data', error))
+    this.props.handleSearch();
   }
 
   render() {
+    const {gifs, handleSearch} = this.props
     return (
       <div className="App">
         <div className="app-header">
-          <HeaderComponent onSearch={this.handleSearch}/>
+          <HeaderComponent onSearch={handleSearch}/>
         </div>
         <div>
-          <HomeComponent {...this.state} />
+          <HomeComponent {...gifs} />
         </div>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  query: PropTypes.string,
+  gifs: PropTypes.object,
+  handleSearch: PropTypes.func
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSearch: (query='pedro') => dispatch(loadGifs(query))
+  }
+};
+
+const mapStateToProps = state => {
+  return {
+    gifs: state
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
