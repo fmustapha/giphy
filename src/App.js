@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 //components
 import HeaderComponent from './components/HeaderComponent';
 import HomeComponent from './components/HomeComponent';
+import UserGifsComponent from './components/UserGifsComponent';
+
 // import logo from './logo.svg';
 //stylesheet
 import './App.css';
@@ -31,6 +33,9 @@ class App extends Component {
         </div>
         <div>
           <HomeComponent {...this.props} />
+        </div>
+        <div>
+          <UserGifsComponent {...this.props} />
         </div>
       </div>
     );
