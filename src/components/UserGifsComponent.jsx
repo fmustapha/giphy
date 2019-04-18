@@ -20,10 +20,13 @@ class UserGifsComponent extends Component {
     }
 
     handleClick = (e,id) => {
-        console.log(id, "<--id")
+        if(id) {
+            return this.props.handleOnDelete(id)
+        }
+        this.props.handleOnDeleteError("Unsuccessful...Contact Admin")
     }
     render() { 
-        const { gifs, message, error, loadingUserGifs } = this.props;
+        const { gifs,loadingUserGifs } = this.props;
         let userGifs;
             if(loadingUserGifs) {
                 return userGifs = <h2>Loading user gifs...</h2>;
@@ -69,7 +72,7 @@ UserGifsComponent.propTypes = {
   const mapDispatchToProps = dispatch => {
     return {
       handleSearch: (query='pedro') => dispatch(loadUserGifs(query)),
-      handleOnDelete:(gif) => dispatch(removeGif(gif)),
+      handleOnDelete:(id) => dispatch(removeGif(id)),
       handleOnDeleteError: (error) => dispatch(removeGifError(error))
     }
   };
