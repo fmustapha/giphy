@@ -16,16 +16,16 @@ const HomeComponent = props => {
             props.handleSaveError('The gif was not selected');
     }
 
-    const { gifs } = props;
-    const {gifs:allGifs, loading } = gifs;
+    const { gifs, loading } = props;
+    // const {gifs:allGifs, loading } = gifs;
     let gifsResult;
         if(loading) {
             return gifsResult = <h2>Loading...</h2>;
         }
-        if(!loading && allGifs.length < 1) {
+        if(!loading && gifs.length < 1) {
             return gifsResult = <h2>Sorry, no results found for your search</h2>
         }
-        gifsResult = allGifs && allGifs.map((gif, index) => 
+        gifsResult = gifs && gifs.map((gif, index) => 
                         <div key={index}>
                             <GifsComponent
                                 url={gif.images.fixed_height.url}
