@@ -4,6 +4,7 @@
     export const REMOVE_GIF = 'REMOVE_GIF';
     export const REMOVE_GIF_ERROR = 'REMOVE_GIF_ERROR';
     export const LOAD_USER_GIFS = 'LOAD_USER_GIF';
+    export const LOADING_USER_GIFS = 'LOADIING_USER_GIFS';
     export const LOAD_USER_GIFS_ERROR = 'LOAD_USER_GIFS_ERROR';
     export const SEARCH_GIFS = 'SEARCH_GIFS';
     export const SEARCH_GIFS_ERROR = 'SEARCH_GIFS_ERROR';
