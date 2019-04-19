@@ -7,17 +7,18 @@ import '../stylesheets/HomeComponent.css';
 
 
 const HomeComponent = props => {
-
+    
     const handleClick =(e, gif) => {
         e.preventDefault();
             if(gif) {
+                alert('Saved!')
                 return props.handleGifSave(gif);
             }
             props.handleSaveError('The gif was not selected');
     }
 
-    const { gifs, loading } = props;
-    // const {gifs:allGifs, loading } = gifs;
+    const { gifs, loading} = props;
+    console.log(gifs, "<--gifs")
     let gifsResult;
         if(loading) {
             return gifsResult = <h2>Loading...</h2>;
@@ -27,17 +28,21 @@ const HomeComponent = props => {
         }
         gifsResult = gifs && gifs.map((gif, index) => 
                         <div key={index}>
+                        <ButtonComponent
+                                className="btn btn-info"
+                                key={index}
+                                type="submit"
+                                label={<i className="far fa-save"></i>}
+                                name="save"
+                                onClick={(e) => handleClick(e,gif)}
+                            />
                             <GifsComponent
                                 url={gif.images.fixed_height.url}
                                 key={gif.id}
                             />
-                            <ButtonComponent
-                                key={index}
-                                type="submit"
-                                label="Save"
-                                name="save"
-                                onClick={(e) => handleClick(e,gif)}
-                            />
+                            <p>{gif.title}</p>
+                            <p>{gif.username}</p>
+                            
                         </div>);
 
         return ( 

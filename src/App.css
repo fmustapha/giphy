@@ -1,5 +1,17 @@
+body {-webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover; 
+    background-color: #F0F8FF;
+    background-image: linear-gradient(#F0F8FF, #008B8B);
+    min-height: 100vh; 
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
 }
 
 .App-logo {
@@ -23,8 +35,9 @@
   color: #61dafb;
 }
 
-ul {
-list-style-type: none;
+.gifs {
+  /* position: absolute; */
+  z-index: -2;
 }
 
 @keyframes App-logo-spin {
