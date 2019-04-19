@@ -1,8 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GIPHY
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It consumes the [Bootkik Gif API](https://bootkik-challenge.prod.with-datafire.io/searchGifs).
+The application enables you search for gifs and save them on your personal gifs page.
 
-In the project directory, you can run:
+
+## Steps to setup the app
+In your terminal run `git clone https://github.com/fmustapha/giphy.git`
+
+Next, change directory to the app folder.
+
+Run `npm install` to install app dependencies
+
+Run `npm start` to start the app
+
+## Read additional notes on Create React App below
 
 ### `npm start`
 

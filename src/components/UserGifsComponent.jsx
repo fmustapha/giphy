@@ -5,7 +5,7 @@ import GifsComponent from './GifsComponent';
 import ButtonComponent from './ButtonComponent';
 
 // //stylesheet
-// import './App.css';
+import '../stylesheets/UserGifsComponent.css';
 
 const UserGifsComponent = (props) => {
     const handleClick = (e,id) => {
@@ -30,10 +30,13 @@ const UserGifsComponent = (props) => {
                             url={gif.images.fixed_height.url}
                             key={gif.id}
                         />
+                        <p>{gif.title}</p>
+                        <p>{gif.username}</p>
                         <ButtonComponent
+                            className="btn btn-warning"
                             key={index}
                             type="submit"
-                            label="Remove"
+                            label={<i className="fas fa-trash-alt"></i>}
                             name="remove"
                             onClick={(e) => handleClick(e,gif.id)}
                         />
@@ -41,9 +44,7 @@ const UserGifsComponent = (props) => {
 
         return ( 
             <div className="gifs-wrapper">
-                <div>
                     {userGifs}
-                </div>
             </div>
          );
 }

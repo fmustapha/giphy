@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+
 import { loadGifs,
           addGif,
           addGifError,
           loadUserGifs,
           removeGif,
           removeGifError } from './actions/gifs';
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -13,7 +15,6 @@ import HeaderComponent from './components/HeaderComponent';
 import HomeComponent from './components/HomeComponent';
 import UserGifsComponent from './components/UserGifsComponent';
 
-// import logo from './logo.svg';
 //stylesheet
 import './App.css';
 
@@ -24,7 +25,6 @@ class App extends Component {
       page:'home'
     };
   }
-
   componentDidMount() {
     this.props.handleSearch();
   }
@@ -36,7 +36,6 @@ class App extends Component {
         page: 'my-gifs'
       })
     } else {
-      this.props.handleSearch();
       this.setState({
         page: 'home'
       })
@@ -63,6 +62,7 @@ App.propTypes = {
   query: PropTypes.string,
   gifs: PropTypes.array,
   loading: PropTypes.bool,
+  message: PropTypes.string,
   userGifs: PropTypes.object,
   handleSearch: PropTypes.func,
   handleGifSave: PropTypes.func,
@@ -81,11 +81,12 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { gifs, loading, userGifs } = state
+  const { gifs, loading, userGifs, message } = state
   return {
     gifs,
     loading,
-    userGifs
+    userGifs,
+    message
   }
 }
 

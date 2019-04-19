@@ -1,5 +1,10 @@
-.wrapper {
+.search-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.search-input {
+    width: 500px;
+    max-width: 716px;
 }

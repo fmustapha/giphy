@@ -19,7 +19,6 @@ export const loadGifs = (query) => {
     return dispatch => axios.get(`https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`)
       .then((response) => {
       const gifs = response.data.data;
-    //   const pagination = response.data.pagination;
       dispatch({type: LOADING_GIFS})
       dispatch({type: LOAD_GIFS, payload:gifs});
     })
