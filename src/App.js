@@ -1,59 +1,68 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { loadGifs,
-          addGif,
-          addGifError,
-          loadUserGifs,
-          removeGif,
-          removeGifError } from './actions/gifs';
+import {
+  loadGifs,
+  addGif,
+  addGifError,
+  loadUserGifs,
+  removeGif,
+  removeGifError
+} from "./actions/gifs";
 
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 //components
-import HeaderComponent from './components/HeaderComponent';
-import HomeComponent from './components/HomeComponent';
-import UserGifsComponent from './components/UserGifsComponent';
+import HeaderComponent from "./components/HeaderComponent";
+import HomeComponent from "./components/HomeComponent";
+import UserGifsComponent from "./components/UserGifsComponent";
 
 //stylesheet
-import './App.css';
+import "./App.css";
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      page:'home'
+      page: "home"
     };
   }
   componentDidMount() {
     this.props.handleSearch();
   }
 
-  handlePageChange = (e) => {
+  handlePageChange = e => {
     e.preventDefault();
-    if(e.target.name === 'my-gifs') {
+    if (e.target.name === "my-gifs") {
       this.setState({
-        page: 'my-gifs'
-      })
+        page: "my-gifs"
+      });
     } else {
       this.setState({
-        page: 'home'
-      })
+        page: "home"
+      });
     }
-  }
+  };
 
   render() {
     const { page } = this.state;
     return (
-        <div className="App">
-          <div className="app-header">
-            <HeaderComponent {...this.props} handlePage={this.handlePageChange} {...this.state}/>
-          </div>
-           {page === 'home' 
-              ? <HomeComponent {...this.props}/>
-              : <UserGifsComponent {...this.props}/>
-            }
+      <div className="App">
+        <div className="app-header">
+          <HeaderComponent
+            {...this.props}
+            handlePage={this.handlePageChange}
+            {...this.state}
+          />
         </div>
+        <div className="gifs-display">
+        {page === "home" ? (
+          <HomeComponent {...this.props} />
+        ) : (
+          <UserGifsComponent {...this.props} />
+        )}
+        </div>
+      </div>
     );
   }
 }
@@ -67,27 +76,30 @@ App.propTypes = {
   handleSearch: PropTypes.func,
   handleGifSave: PropTypes.func,
   handleSaveError: PropTypes.func
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSearch: (query='pedro') => dispatch(loadGifs(query)),
-    handleGifSave:(gif) => dispatch(addGif(gif)),
-    handleSaveError: (error) => dispatch(addGifError(error)),
-    handleUserSearch: (query='pedro') => dispatch(loadUserGifs(query)),
-    handleOnDelete:(id) => dispatch(removeGif(id)),
-    handleOnDeleteError: (error) => dispatch(removeGifError(error))
-  }
+    handleSearch: (query = "pedro") => dispatch(loadGifs(query)),
+    handleGifSave: gif => dispatch(addGif(gif)),
+    handleSaveError: error => dispatch(addGifError(error)),
+    handleUserSearch: (query = "pedro") => dispatch(loadUserGifs(query)),
+    handleOnDelete: id => dispatch(removeGif(id)),
+    handleOnDeleteError: error => dispatch(removeGifError(error))
+  };
 };
 
 const mapStateToProps = state => {
-  const { gifs, loading, userGifs, message } = state
+  const { gifs, loading, userGifs, message } = state;
   return {
     gifs,
     loading,
     userGifs,
     message
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -1,59 +1,56 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import ButtonComponent from './ButtonComponent';
+import React, { Component } from "react";
+import ButtonComponent from "./ButtonComponent";
 
-import '../stylesheets/HeaderComponent.css';
+import "../stylesheets/HeaderComponent.css";
 
 class HeaderComponent extends Component {
-    
-    state = {
-        search: ''
-    };
+  state = {
+    search: ""
+  };
 
-    handleChange =(e) => {
-        this.setState({ search: e.target.value })
-    }
+  handleChange = e => {
+    this.setState({ search: e.target.value });
+  };
 
-    handleSubmit = (e) =>{
-        e.preventDefault();
-        this.props.handleSearch(this.state.search)
-        e.currentTarget.reset();
-    }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleSearch(this.state.search);
+    e.currentTarget.reset();
+  };
 
-    render() {
+  render() {
     return (
-        <div className="search-wrapper">
-        <div>
-        <ButtonComponent
+      <div className="search-wrapper">
+        <div id="user-gifs">
+          <ButtonComponent
             className="btn btn-outline-info"
             type="submit"
-            label={this.props.page === "home"? "My Saved Gifs" : "Home"}
-            name={this.props.page === "home"? "my-gifs" : "home"}
-            onClick={(e) => this.props.handlePage(e)}
-        />
+            label={this.props.page === "home" ? "My Saved Gifs" : "Home"}
+            name={this.props.page === "home" ? "my-gifs" : "home"}
+            onClick={e => this.props.handlePage(e)}
+          />
         </div>
-        
+
         <form className="search" onSubmit={this.handleSubmit}>
-           <div> 
-                <input
-                    type="search"
-                    name="search"
-                    className="search-input"
-                    placeholder="Search for a gif..."
-                    onChange={this.handleChange}
-                    id="search"
-                />
-            <ButtonComponent
-                className="btn btn-outline-info"
-                type="submit"
-                label={<i className="fa fa-search" />}
+          <div>
+            <input
+              type="search"
+              name="search"
+              className="search-input"
+              placeholder="Search for a gif..."
+              onChange={this.handleChange}
+              id="search"
             />
-            </div>
-            
+            <ButtonComponent
+              className="btn btn-outline-info"
+              type="submit"
+              label={<i className="fa fa-search" />}
+            />
+          </div>
         </form>
-        </div>
+      </div>
     );
-    }
+  }
 }
 
 export default HeaderComponent;

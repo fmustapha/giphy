@@ -1,10 +1,15 @@
 .search-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around
+}
+
+.search {
+    float: right;
 }
 
 .search-input {
-    width: 500px;
-    max-width: 716px;
+  width: 300px;
+  max-width: 716px;
+  align-self: center;
 }
