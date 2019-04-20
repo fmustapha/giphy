@@ -1,10 +1,11 @@
-body {-webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover; 
-    background-color: #F0F8FF;
-    background-image: linear-gradient(#F0F8FF, #008B8B);
-    min-height: 100vh; 
+body {
+  -webkit-background-size: cover; /* For WebKit*/
+  -moz-background-size: cover; /* Mozilla*/
+  -o-background-size: cover; /* Opera*/
+  background-size: cover;
+  background-color: #f0f8ff;
+  background-image: linear-gradient(#f0f8ff, #008b8b);
+  min-height: 100vh;
 }
 
 .App {
@@ -38,6 +39,12 @@ body {-webkit-background-size: cover; /* For WebKit*/
 .gifs {
   /* position: absolute; */
   z-index: -2;
+}
+
+.gifs-display {
+    width: 100%; 
+    margin: 5%;
+    margin-top: 20px;
 }
 
 @keyframes App-logo-spin {
