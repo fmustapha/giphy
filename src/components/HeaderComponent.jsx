@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ButtonComponent from "./ButtonComponent";
-
 import "../stylesheets/HeaderComponent.css";
 
 class HeaderComponent extends Component {
@@ -8,47 +6,39 @@ class HeaderComponent extends Component {
     search: ""
   };
 
-  handleChange = e => {
-    this.setState({ search: e.target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.handleSearch(this.state.search);
-    e.currentTarget.reset();
-  };
-
   render() {
     return (
-      <div className="search-wrapper">
-        <div id="user-gifs">
-          <ButtonComponent
-            className="btn btn-outline-info"
-            type="submit"
-            label={this.props.page === "home" ? "My Saved Gifs" : "Home"}
-            name={this.props.page === "home" ? "my-gifs" : "home"}
-            onClick={e => this.props.handlePage(e)}
-          />
-        </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark hd">
+        <a className="navbar-brand" href="#">
+          GiPHY
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-        <form className="search" onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="search"
-              name="search"
-              className="search-input"
-              placeholder="Search for a gif..."
-              onChange={this.handleChange}
-              id="search"
-            />
-            <ButtonComponent
-              className="btn btn-outline-info"
-              type="submit"
-              label={<i className="fa fa-search" />}
-            />
-          </div>
-        </form>
-      </div>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <a className="nav-link" href="#">
+                Home <span className="sr-only">(current)</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                My Gifs
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     );
   }
 }

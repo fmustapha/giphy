@@ -18,7 +18,7 @@ import {
  * @returns {Object} containing a payload/ error
  */
 export const loadGifs = query => {
-  return dispatch =>
+  return dispatch => 
     axios
       .get(
         `https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`
@@ -33,6 +33,14 @@ export const loadGifs = query => {
         dispatch({ type: LOAD_GIFS_ERROR, payload: message });
       });
 };
+
+// export async function loadGifs(query) {
+//   return dispatch =>
+//      axios
+//           .get(
+//             `https://bootkik-challenge.prod.with-datafire.io/searchGifs?q=${query}`
+//     )
+// } 
 
 /**
  *

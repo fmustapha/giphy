@@ -10,9 +10,11 @@ body {
 
 .App {
   text-align: center;
+  width: auto;
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 0;
+  margin: 0;
 }
 
 .App-logo {
@@ -36,15 +38,19 @@ body {
   color: #61dafb;
 }
 
+.searchBox {
+  margin: 0 10%;
+}
+
 .gifs {
   /* position: absolute; */
   z-index: -2;
 }
 
 .gifs-display {
-    width: 100%; 
-    margin: 5%;
-    margin-top: 20px;
+  width: auto;
+  padding-left: 10%;
+  margin-top: 20px;
 }
 
 @keyframes App-logo-spin {

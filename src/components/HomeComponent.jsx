@@ -25,18 +25,22 @@ const HomeComponent = props => {
   gifsResult =
     gifs &&
     gifs.map((gif, index) => (
-      <div key={index}>
+      <div key={index} className="gif-card">
+        <GifsComponent url={gif.images.fixed_height.url} key={gif.id} />
+        <div>
+          <p>{gif.title}</p>
+          {gif.username ? <p>gif.username</p> :  <p>&nbsp;</p>}
+        </div>
+        <div>
         <ButtonComponent
           className="btn btn-info"
           key={index}
           type="submit"
-          label={<i className="far fa-save" />}
+          label={"Save"}
           name="save"
           onClick={e => handleClick(e, gif)}
         />
-        <GifsComponent url={gif.images.fixed_height.url} key={gif.id} />
-        <p>{gif.title}</p>
-        <p>{gif.username}</p>
+        </div>
       </div>
     ));
 
